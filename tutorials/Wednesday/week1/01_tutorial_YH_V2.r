@@ -6,14 +6,14 @@
 getwd()
 
 # Set working directory 
-setwd("D:/TCD_courses/2024_2025Autumn/Applied StatsQuant Methods I_Fall 2024/tutorials/01")
+# setwd("D:/TCD_courses/2024_2025Autumn/Applied StatsQuant Methods I_Fall 2024/tutorials/01")
 getwd()
 
 ### Data collection ----------
 
 # Load data 
 
-df <- read.csv("fictional_data.csv")
+df <- read.csv("datasets/fictional_data.csv")
 
 # First step, look at data
 View(df)
@@ -196,7 +196,7 @@ plot(df$income,df$edu,
      col=df$cap+1) # Color over third variable (+1, because first color in R is white)
 
 # Improve visualization and save
-png(file="output/scatter_plot.png")
+png(file="tutorials/Wednesday/week1/scatter_plot.png")
 plot(df$edu,
      df$income,
      col=df$cap+1,
