@@ -19,7 +19,7 @@ getwd()
 
 # Load data 
 df <- read.csv("fictional_data.csv")
-
+df <- fictional_data
 # Selection of variables
 # Education: University level education in years
 # Income: Monthly net income
@@ -53,7 +53,7 @@ hist(df$income,
      main="Monthly net income",
      xlab="Euro")
 
-plot(density(df$incom),
+plot(density(df$income),
      main="Monthly net income",
      xlab="Euro")
 
@@ -98,7 +98,7 @@ upper_95
 # The **precise** solution, using normal distribution
 # Lower bound, 95 confidence level
 lower_95_n <- qnorm(0.025, 
-                    mean = mean(df$incom), 
+                    mean = mean(df$income), 
                     sd = (sd(df$income)/sqrt(length(df$income))))
 
 # Upper bound, 95 confidence level

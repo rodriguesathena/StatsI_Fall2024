@@ -1,6 +1,6 @@
 #####################
 # load libraries
-#set wd()
+# set wd
 # clear global .envir
 #####################
 
@@ -34,20 +34,6 @@ lapply(c(),  pkgTest)
 #####################
 
 y <- c(105, 69, 86, 100, 82, 111, 104, 110, 87, 108, 87, 90, 94, 113, 112, 98, 80, 97, 95, 111, 114, 89, 95, 126, 98)
-
-# 90% Confidence Interval: point estimate +/- margin of error
-#point estimate
-ymean <- mean(y) #mean 98.44
-#margin of error
-ystderr <- sd(y)/sqrt(length(y)) #standard error 2.618575
-confidence <- qnorm(0.95) # +/- 1.64
-#lower bound
-upper_90 <- (ymean + (confidence)*ystderr)  # 102.7345
-lower_90 <- (ymean - (confidence)*ystderr)  # 94.14554
-# overall
-lower_90
-ymean
-upper_90
 
 #####################
 # Problem 2

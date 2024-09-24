@@ -6,14 +6,14 @@
 getwd()
 
 # Set working directory 
-# setwd("D:/TCD_courses/2024_2025Autumn/Applied StatsQuant Methods I_Fall 2024/tutorials/01")
+setwd("C:/StatsI_Fall2024")
 getwd()
 
 ### Data collection ----------
 
 # Load data 
 
-df <- read.csv("datasets/fictional_data.csv")
+df <- fictional_data
 
 # First step, look at data
 View(df)
