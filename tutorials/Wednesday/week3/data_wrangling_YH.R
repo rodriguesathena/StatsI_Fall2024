@@ -34,7 +34,7 @@ getwd()
 
 
 # Import movies.csv
-dm <- read.csv("movies.csv") 
+dm <- read.csv("datasets/movies.csv") 
 
 View(dm)
 

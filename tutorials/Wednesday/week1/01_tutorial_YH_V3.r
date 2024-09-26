@@ -24,7 +24,7 @@ head(df)
 
 tail(df, 2)
 
-### Descriptive analysis ----------
+### Descripive analysis ----------
 
 ### Income ###
 hist(df$income) # Distribution

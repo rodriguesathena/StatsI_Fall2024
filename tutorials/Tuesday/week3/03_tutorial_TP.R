@@ -221,14 +221,14 @@ chi$residuals
 
 # Load data 
 df <- read.csv("fictional_data.csv")
-
+df <- fictional_data
 # Scatter plot 
 plot(df$income,df$edu)
 plot(df$income,df$edu,
      col=df$cap+1) # Color over third variable (+1, because first color in R is white)
 
 # Improve visualization and save
-png(file="tutorials/03/scatter_plot.png")
+#png(file="tutorials/03/scatter_plot.png")
 plot(df$income,
      df$edu,
      col=df$cap+1,

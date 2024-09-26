@@ -260,7 +260,7 @@ cor(df$edu, df$income)
 # Add to scatter plot
 plot(df$edu, df$income)
 text(6.5, 1000, sprintf("Correlation=%s", round(cor(df$income, df$edu), 4)))
-
+?text
 
 # (d.) Bivariate regression  -----
 
