@@ -35,14 +35,14 @@ pkgTest <- function(pkg){
 
 y <- c(105, 69, 86, 100, 82, 111, 104, 110, 87, 108, 87, 90, 94, 113, 112, 98, 80, 97, 95, 111, 114, 89, 95, 126, 98)
 
+# 
 # 90% Confidence Interval: point estimate +/- margin of error
-#point estimate
-ymean <- mean(y) #mean 98.44
-df <- length(y)-1
+ymean <- mean(y) # mean 98.44
+df <- length(y)-1 # degrees of freedom 24
 ystderr <- sd(y)/sqrt(length(y)) # standard error 2.618575
 confidence <- qt((.9)+ (1-.9)/2, df) # confidence 1.710882
-upper_90 <- (ymean + (confidence)*ystderr)  # 102.9201
-lower_90 <- (ymean - (confidence)*ystderr)  # 93.95993
+upper_90 <- (ymean + (confidence)*ystderr)  # upper bounds 102.9201
+lower_90 <- (ymean - (confidence)*ystderr)  # lower bounds 93.95993
 # overall
 lower_90
 ymean

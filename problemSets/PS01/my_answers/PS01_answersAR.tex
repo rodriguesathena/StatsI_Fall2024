@@ -86,16 +86,20 @@ A school counselor was curious about the average of IQ of the students in her sc
 		90% CI = [94, 103]
 	Code: 
 	\end{Verbatim}
-			\lstinputlisting[language=R, firstline= 40 , lastline=45] {PS01_answersAR.R}  
+			\lstinputlisting[language=R, firstline= 39 , lastline=45] {PS01_answersAR.R}  
 	\vspace{4cm}
 	\item Next, the school counselor was curious  whether  the average student IQ in her school is higher than the average IQ score (100) among all the schools in the country.\\ 
 	\noindent Using the same sample, conduct the appropriate hypothesis test with $\alpha=0.05$.
 	\begin{Verbatim}
 	Step 1: Assumptions
 		The data y is a random, continous, numeric sample.
+	Code:
+	\end{Verbatim}
+	\lstinputlisting[language=R, firstline= 54, lastline=55]{PS01_answersAR.R}  
+	\begin{Verbatim}
 	Step 2: Hypothesis
 		The Null Hypothesis is that the mean is <= 100
-		The Alternative Hypothesis is that mean > 100
+		The Alternative Hypothesis is that the mean > 100
 	Step 3: Calculate the Test Statistic
 		The test statistic is -0.5957439.
 	Code:
@@ -147,6 +151,7 @@ Please plot the relationships among \emph{Y}, \emph{X1}, \emph{X2}, and \emph{X3
 	\label{fig:plot_1}
 	\includegraphics[width=.85\textwidth]{all_relationships.png}
 \end{figure}
+\vspace{1cm}
 \begin{Verbatim}
 Relationships:
 Housing Expenditure vs. Personal Income (top left) shows 
@@ -157,6 +162,7 @@ housing assistance in state.
 
 Housing Expenditure vs. Financial Insecurity (top middle) has a
 nonlinear relationship with a weak correlation.
+
 Housing Expenditure vs. Urban Residents (top right) showcases a
 linear relationship with a weak, positive correlation. 
 This shows there is an effect in expenditure on 
@@ -173,13 +179,11 @@ increased personal income in state and increasing urban populations.
 
 Urban Residents vs. Financial Insecurity (bottom right) has a nonlinear 
 with little to no correlation. This shows that these 
-variables have little 
-impact in relation to each other.
+variables have little impact in relation to each other.
 
  Code:
 \end{Verbatim}
 	\lstinputlisting[language=R, firstline= 81 , lastline=111] {PS01_answersAR.R}
-\vspace{3cm}
 \item
 Please plot the relationship between \emph{Y} and \emph{Region}? On average, which region has the highest per capita expenditure on housing assistance?
 \begin{figure}[h!]\centering
@@ -189,13 +193,13 @@ Please plot the relationship between \emph{Y} and \emph{Region}? On average, whi
 \end{figure}
 \begin{Verbatim}
 	On average, the West (Region 4) has the highest per capita 
-	expenditure on housing assistance at 88.31.
+	expenditure on housing assistance at 88.31 followed by the
+	North Central (Region 2), the Northeast (Region 1), 
+	and the South (Region 3).
 	
 	Code:
 \end{Verbatim}
 	\lstinputlisting[language=R, firstline= 116 , lastline=123] {PS01_answersAR.R}
-\vspace{5cm}
-
 \item
 Please plot the relationship between \emph{Y} and \emph{X1}? Describe this graph and the relationship. Reproduce the above graph including one more variable \emph{Region} and display different regions with different types of symbols and colors.
  \begin{Verbatim}
