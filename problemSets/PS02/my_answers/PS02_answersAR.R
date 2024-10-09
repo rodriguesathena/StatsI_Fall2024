@@ -1,8 +1,8 @@
 ## PROBLEM SET 2 ##
 
 # Question 1
-# Null Hypothesis = there is no relation between socioeconomic class and bribe solicitation
-# Alternative Hypothesis = socioeconomic class impacts bribe solicitation
+# Null Hypothesis = socioeconomic class and bribe solicitation statistically independent
+# Alternative Hypothesis = socioeconomic class and bribe solicitation statistically dependent
 # Setting up Matrix
 observed <- matrix(c(14, 6, 7, 7, 7, 1), nrow = 2, byrow=TRUE)
 rownames(observed) <- c("Upper Class", "Lower Class")
@@ -61,3 +61,5 @@ summary(bireg)
 # we are given the right evidence to reject 
 #the null hypothesis that the reservation policy does not impact
 #the amount of new or repaired drinking facilities in villages.
+
+
