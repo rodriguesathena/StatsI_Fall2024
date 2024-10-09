@@ -32,33 +32,32 @@ chi_pvalue
 #Conclusion = We have sufficient evidence, p-value of 0.15 is greater than confidence level of 0.1, to fail to reject the null hypothesis that there is no relation between socioeconomic class and solicitation
 
 #part c
-# adjusted residual = (observed - expected) / sqrt(expected (1-row prop.)(1-col prop.))
 residuals <- round((observed - expected),2)
-adjusted_residuals <- round((residuals / (sqrt(expected * (1-(row_total/overall))*(1-(column_total/overall))))),3)
-head(adjusted_residuals)
-# these standardized residuals help in understanding how far the observed value is from expectations
-# the significant residual of bribe (1.932) requested in lower class implies they face greater probability for
-# discrimination and bribes when pulled over than upper-class. Similarly, it is more likely
-# those in the upper class will be let go with a warning and no further requests if caught
+#standardized_residuals <- round(residuals / sqrt(expected), 3)
+standardized_residuals <- round((residuals / (sqrt(expected * (1-(row_total/overall)) %*% t(1-(column_total/overall))))),3)
+head(standardized_residuals)
 
 # Question 2
 # importing and inspecting data
-women <- read.csv("women.csv")
+women <- read.csv("StatsI_Fall2024/problemSets/PS02/my_answers/women.csv")
 head(women)
 summary(women)
 
 #part a
-#Null-Hypothesis: The gender of leadership does not impact the amount of new or repaired drinking facilities in villages.
-#Alternative Hypothesis: There is a difference in amount of new or repaired drinking water facilities based on male or female leadership in villages.
+#Null-Hypothesis: The reservation policy does not impact the amount of new or repaired drinking facilities in villages. Ho : b = 0
+#Alternative Hypothesis: The reservation policy does impact the amount of new or repaired drinking water facilities based on male or female leadership in villages.
 
 #part b
-bireg <- lm(water~female, data = women)
+bireg <- lm(water~reserved, data = women)
 summary(bireg)
-#The bivariate regression shows a coefficient estimate of 7.864 
-#and a p-value of 0.0413. This regression interprets that at the 95% confidence level,
-#villages with female leaders have about 8 more new or repaired 
+
+#part c
+#The bivariate regression shows a coefficient estimate of 9.252 
+#and a p-value of 0.0197. This regression interprets that at the 95% confidence level,
+#villages with female leaders have about 9 more new or repaired 
 #drinking water facilities than male-led villages. 
-#According to the regression summary, at a significance level of 0.05 
+#According to the regression summary, the p-value of 0.0197 is lower than the significance level
+# of 0.05,
 # we are given the right evidence to reject 
-#the null hypothesis that the gender of leadership does not impact
+#the null hypothesis that the reservation policy does not impact
 #the amount of new or repaired drinking facilities in villages.

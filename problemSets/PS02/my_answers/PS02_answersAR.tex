@@ -92,6 +92,13 @@
 		\hline
 	\end{tabular}
 \end{table}
+\begin{Verbatim}
+Null Hypothesis: There is no relation between a driver's socioeconomic 
+class and bribe solicitation, the variables are statistically independent.
+
+Alternative Hypothesis: A driver's socioeconomic class impacts whether
+they are solicited for a bribe, the variables are statistically dependent.
+\end{Verbatim}
 \begin{enumerate}
 	\item [(a)]
 	Calculate the $\chi^2$ test statistic by hand/manually (even better if you can do "by hand" in \texttt{R}).
@@ -127,25 +134,22 @@ Code:
 			& Not Stopped & Bribe requested & Stopped/given warning \\
 			\\[-1.8ex] 
 			\hline \\[-1.8ex]
-			Upper class  & 0.322 & -1.518  & 1.652  \\
+			Upper class  & 0.322 & -1.644  & 1.526  \\
 			\\
-			Lower class & -0.274 & 1.932  & -1.525  \\
+			Lower class & -0.322 & 1.644  & -1.525  \\
 		\end{tabular}
 	\end{table}
-\lstinputlisting[language=R, firstline=36, lastline=37]{PS02_answersAR.R}  
+\lstinputlisting[language=R, firstline=35, lastline=37]{PS02_answersAR.R}  
 
 	\item [(d)] How might the standardized residuals help you interpret the results?  
 \begin{Verbatim}
 Standardized residuals help in understanding how 
-far observed values are from expectations.
-In the table above, the near-significant residual (1.932)
-of bribe requested in the lower class 
-implies they are likely to be asked for a bribe when 
-pulled over compared to those in the upper class. 
-Similarly, it may be more likely for those in the upper class 
-to be let go with a warning if caught based on 
-the residual of 1.652.
-
+far observed values are from expectations. 
+These compare individual observed cell counts to 
+expected frequencies of the model to help describe 
+the pattern of association among the contingency table.
+A large standard residual, one who's absolute value is 
+greater than 2, provides evidence to reject the null hypothesis.   
 \end{Verbatim}
 \end{enumerate}
 \newpage
@@ -167,30 +171,33 @@ Chattopadhyay and Duflo were interested in whether women promote different polic
 \begin{enumerate}
 	\item [(a)] State a null and alternative (two-tailed) hypothesis. 
 \begin{Verbatim}
-Null-Hypothesis: The gender of leadership does not impact 
+Null-Hypothesis: The reservation policy does not impact 
 the amount of new or repaired drinking facilities in villages.
-Alternative Hypothesis: There is a difference in amount 
+Alternative Hypothesis: The reservation policy impacts the amount of
 of new or repaired drinking water facilities 
-based on male or female leadership in villages.
+based on male or female leadership in villages. 
 \end{Verbatim}
-	\item [(b)] Run a bivariate regression to test this hypothesis in \texttt{R} (include your code!).
+\texttt{Ho: b = 0  Ha: b $\neq$ 0}
+
+\item [(b)]Run a bivariate regression to test this hypothesis in \texttt{R} (include your code!).
 \begin{figure}[h!]\centering
 	\caption{\footnotesize Bivariate Regression}
 	\label{fig:bireg}
 	\includegraphics[width=.85\textwidth]{bireg.png}
 \end{figure}
-\lstinputlisting[language=R, firstline=55, lastline=56]{PS02_answersAR.R}  
+\lstinputlisting[language=R, firstline=51, lastline=52]{PS02_answersAR.R}  
 \item [(c)] Interpret the coefficient estimate for reservation policy. 
 \begin{Verbatim}
-The bivariate regression shows a coefficient estimate of 7.864 
-and a p-value of 0.0413. This regression interprets 
-that at the 95% confidence level,
-villages with female leaders have about 8 more new or repaired 
-drinking water facilities than male-led villages. 
-According to the regression summary, at a significance level of 0.05 
-we are given the right evidence to reject 
-the null hypothesis that the gender of leadership does not impact
-the amount of new or repaired drinking facilities in villages.
+The bivariate regression shows a coefficient estimate of 9.252 
+and a p-value of 0.0197. According to sufficient evidence found 
+from the regression summary, the p-value of 0.0197 being lower
+than the significance value of 0.05, we reject the null
+hypothesis that reservation policies do not impact the amount 
+of new or repaired drinking facilities in villages.
+This regression interprets that at the 95% confidence level, 
+villages with spots reserved for women leaders
+have about 9 more new or repaired drinking water facilities 
+than villages without the policy. 
 \end{Verbatim}
 \end{enumerate}
 
