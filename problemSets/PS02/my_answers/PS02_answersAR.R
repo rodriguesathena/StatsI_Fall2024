@@ -22,9 +22,8 @@ full_table <- rbind(full_table, c(column_total = paste(column_total), Total = pa
 rownames(full_table)[nrow(full_table)] <- "Total" 
 colnames(full_table)[ncol(full_table)] <- "Total" 
 #part a
-chi_square_stat <- sum((observed - expected)^2 / expected) #3.801141
-round(chi_square_stat, 2) #3.8
-
+chi_square_stat <- round(sum((observed - expected)^2 / expected), 2)
+chi_square_stat
 #part b
 chi_pvalue <- pchisq(chi_square_stat, df = (nrow(observed)-1)*(ncol(observed)-1), lower.tail = FALSE)
 chi_pvalue
@@ -32,9 +31,7 @@ chi_pvalue
 #Conclusion = We have sufficient evidence, p-value of 0.15 is greater than confidence level of 0.1, to fail to reject the null hypothesis that there is no relation between socioeconomic class and solicitation
 
 #part c
-residuals <- round((observed - expected),2)
-#standardized_residuals <- round(residuals / sqrt(expected), 3)
-standardized_residuals <- round((residuals / (sqrt(expected * (1-(row_total/overall)) %*% t(1-(column_total/overall))))),3)
+standardized_residuals <- round(((observed - expected) / (sqrt(expected * (1-(row_total/overall)) %*% t(1-(column_total/overall))))),3)
 head(standardized_residuals)
 
 # Question 2
@@ -44,8 +41,8 @@ head(women)
 summary(women)
 
 #part a
-#Null-Hypothesis: The reservation policy does not impact the amount of new or repaired drinking facilities in villages. Ho : b = 0
-#Alternative Hypothesis: The reservation policy does impact the amount of new or repaired drinking water facilities based on male or female leadership in villages.
+#Null-Hypothesis: The reservation policy does not impact the number of new or repaired drinking water facilities in villages.
+#Alternative Hypothesis: The number of new or repaired drinking water facilities in villages are impacted by the reservation policy. 
 
 #part b
 bireg <- lm(water~reserved, data = women)

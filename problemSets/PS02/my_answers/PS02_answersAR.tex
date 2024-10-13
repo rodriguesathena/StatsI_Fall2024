@@ -103,14 +103,14 @@ they are solicited for a bribe, the variables are statistically dependent.
 	Calculate the $\chi^2$ test statistic by hand/manually (even better if you can do "by hand" in \texttt{R}).
 \begin{Verbatim}
 The chi-square test statistic is 3.80. This was calculated by hand 
-and through R using the Frequency table and the code below.
+and through R using the Frequency table and code below.
 \end{Verbatim}
 \begin{figure}[h!]\centering
 	\caption{\footnotesize Frequency Table}
 	\label{fig:Table 1}
 	\includegraphics[width=.85\textwidth]{frequencies.png}
 \end{figure}
-\lstinputlisting[language=R, firstline=6, lastline=26]{PS02_answersAR.R}  
+\lstinputlisting[language=R, firstline=6, lastline=25]{PS02_answersAR.R}  
 	
 	\item [(b)]
 	Now calculate the p-value from the test statistic you just created (in \texttt{R}).\footnote{Remember frequency should be $>$ 5 for all cells, but let's calculate the p-value here anyway.}  What do you conclude if $\alpha = 0.1$?\\
@@ -122,7 +122,7 @@ to fail to reject the null hypothesis that there is no relation
 between socioeconomic class and solicitation of bribes. 
 Code:
 \end{Verbatim}
-\lstinputlisting[language=R, firstline=29, lastline=29]{PS02_answersAR.R}  
+\lstinputlisting[language=R, firstline=28, lastline=28]{PS02_answersAR.R}  
 	\item [(c)] Calculate the standardized residuals for each cell and put them in the table below.
 	\vspace{1cm}
 	
@@ -137,17 +137,18 @@ Code:
 			Lower class & -0.322 & 1.644  & -1.525  \\
 		\end{tabular}
 	\end{table}
-\lstinputlisting[language=R, firstline=35, lastline=37]{PS02_answersAR.R}  
+\lstinputlisting[language=R, firstline=34, lastline=34]{PS02_answersAR.R}  
 
 	\item [(d)] How might the standardized residuals help you interpret the results?  
 \begin{Verbatim}
-Standardized residuals help in understanding how 
-far observed values are from expectations. 
-These compare individual observed cell counts to 
-expected frequencies of the model to help describe 
+Standardized residuals help in understanding the patterns of association 
+between cells and is calculated using the residuals and table proportions. 
+This comparison of the model helps describe 
 the pattern of association among the contingency table.
 A large standard residual, one who's absolute value is 
-greater than 2, provides evidence to reject the null hypothesis.   
+greater than 2, provides evidence to likeley reject the null hypothesis 
+while standardized residuals below -3 or above 3 provide convincing 
+evidence of a cells true effect.   
 \end{Verbatim}
 \end{enumerate}
 \newpage
@@ -170,10 +171,10 @@ Chattopadhyay and Duflo were interested in whether women promote different polic
 	\item [(a)] State a null and alternative (two-tailed) hypothesis. 
 \begin{Verbatim}
 Null-Hypothesis: The reservation policy does not impact 
-the amount of new or repaired drinking facilities in villages.
-Alternative Hypothesis: The reservation policy impacts the amount of
-of new or repaired drinking water facilities 
-based on male or female leadership in villages. 
+the number of new or repaired drinking water facilities in villages.
+Alternative Hypothesis: The number of
+new or repaired drinking water facilities in villages 
+are impacted by the reservation policy. 
 \end{Verbatim}
 \texttt{Ho: b = 0  Ha: b $\neq$ 0}
 
@@ -183,7 +184,7 @@ based on male or female leadership in villages.
 	\label{fig:bireg}
 	\includegraphics[width=.85\textwidth]{bireg.png}
 \end{figure}
-\lstinputlisting[language=R, firstline=51, lastline=52]{PS02_answersAR.R}  
+\lstinputlisting[language=R, firstline=48, lastline=49]{PS02_answersAR.R}  
 \item [(c)] Interpret the coefficient estimate for reservation policy. 
 \begin{Verbatim}
 The bivariate regression shows a coefficient estimate of 9.252 
