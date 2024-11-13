@@ -62,7 +62,7 @@
 
 
 \title{Problem Set 4}
-\date{Due: November 18, 2024}
+\date{Athena Rodrigues}
 \author{Applied Stats/Quant Methods 1}
 
 
@@ -111,7 +111,9 @@ help(Prestige)
 	\item [(c)]
 	Write the prediction equation based on the result.
 	\lstinputlisting[language=R, firstline= 17 , lastline=22] {PS04_answersAR.R}
-	E[Y] = 21.142 + 0.003 * income + 37.781 * professional + -0.002*income*professional
+	\begin{center}
+		E[Y] = 21.142 + 0.003 * income + 37.781 * professional + -0.002*income*professional
+	\end{center}
 	
 	\item [(d)]
 	Interpret the coefficient for \texttt{income}.
@@ -121,21 +123,45 @@ help(Prestige)
 	\item [(e)]
 	Interpret the coefficient for \texttt{professional}.
 	
-	There is a 37.781 increase in prestige score when there is a change from non-professional to professional occupation (professional changes from 0 --> 1), holding income constant.
+	There is a 37.781 increase in prestige score when there is a change from non-professional to professional occupation (professional changes from 0 to 1), when there is no income.
 	\vspace{.5cm}
 \newpage
 	\item [(f)]
 	What is the effect of a \$1,000 increase in income on prestige score for professional occupations? In other words, we are interested in the marginal effect of income when the variable \texttt{professional} takes the value of $1$. Calculate the change in $\hat{y}$ associated with a \$1,000 increase in income based on your answer for (c).
 	
-	\lstinputlisting[language=R, firstline= 27 , lastline=35] {PS04_answersAR.R}
+	\lstinputlisting[language=R, firstline= 27 , lastline=38] {PS04_answersAR.R}
+	\begin{center}
+		E[Y] = 21.142 + 0.003 * 1000 + 37.781 * 1 + -0.002*1000*1
+			= 59.923
+	\end{center}
+		\begin{center}
+		E[Y] = 21.142 + 0.003 * 0 + 37.781 * 1 + -0.002*0*1
+			= 58.923
+	\end{center}
+	\begin{center}
+		$\Delta{E[y]}$ = 59.923 - 58.923
+		= 1.000
+	\end{center}
 	
-	According to the predicted equation, if someone in a professional occupation (professional == 1) has an income increase of 1000 their prestige score is predicted to be 59.923
-	
-	
+	According to the predicted equation, if someone in a professional occupation (professional = 1) has an income increase of 1000 their prestige score is predicted to be 59.923. However, if one is considered a professional with no income their prestige score is 58.923. This shows there is only a 1 prestige point difference in a professional job going from an income of 0 to 1000 dollars.
+	\newpage
 	\item [(g)]
 	What is the effect of changing one's occupations from non-professional to professional when her income is \$6,000? We are interested in the marginal effect of professional jobs when the variable \texttt{income} takes the value of $6,000$. Calculate the change in $\hat{y}$ based on your answer for (c).
-	\lstinputlisting[language=R, firstline= 37 , lastline=48] {PS04_answersAR.R}
-	
+	\lstinputlisting[language=R, firstline=42 , lastline=53] {PS04_answersAR.R}
+		\begin{center}
+		E[Y] = 21.142 + 0.003 * 6000 + 37.781 * 1 + -0.002*6000*1
+		
+	 		= 64.923
+		\end{center}
+	\begin{center}
+		E[Y] = 21.142 + 0.003 * 6000 + 37.781 * 0 + -0.002*6000*0
+		
+			= 39.142
+	\end{center}
+	\begin{center}
+		$\Delta{E[y]}$ = 64.923 - 39.142
+					= 25.781
+	\end{center}
 	When a professional occupation has an income of 6000, their prestige score is 64.923 according to the predicted equation, 
 	While a non-professional occupation with an income of 6000 only has a 39.142 predicted prestige score. 
 	This means that if one is to change from non-professional to professional, holding income constant, there would be a predicted 25.781 increase in prestige score
@@ -148,7 +174,7 @@ help(Prestige)
 \vspace{.25cm}
 \noindent 	Researchers are interested in learning the effect of all of those yard signs on voting preferences.\footnote{Donald P. Green, Jonathan	S. Krasno, Alexander Coppock, Benjamin D. Farrer,	Brandon Lenoir, Joshua N. Zingher. 2016. ``The effects of lawn signs on vote outcomes: Results from four randomized field experiments.'' Electoral Studies 41: 143-150. } Working with a campaign in Fairfax County, Virginia, 131 precincts were randomly divided into a treatment and control group. In 30 precincts, signs were posted around the precinct that read, ``For Sale: Terry McAuliffe. Don't Sellout Virgina on November 5.'' \\
 
-Below is the result of a regression with two variables and a constant.  The dependent variable is the proportion of the vote that went to McAuliff's opponent Ken Cuccinelli. The first variable indicates whether a precinct was randomly assigned to have the sign against McAuliffe posted. The second variable indicates
+Below is the result of a regression with two variables and a constant.  The dependent variable is the proportion of the vote that went to McAuliffe's opponent Ken Cuccinelli. The first variable indicates whether a precinct was randomly assigned to have the sign against McAuliffe posted. The second variable indicates
 a precinct that was adjacent to a precinct in the treatment group (since people in those precincts might be exposed to the signs).  \\
 
 \vspace{.5cm}
@@ -169,22 +195,81 @@ a precinct that was adjacent to a precinct in the treatment group (since people 
 	\end{tabular}\\
 	\footnotesize{\textit{Notes:} $R^2$=0.094, N=131}
 \end{table}
-
-\vspace{.5cm}
+\newpage
 \begin{enumerate}
 	\item [(a)] Use the results from a linear regression to determine whether having these yard signs in a precinct affects vote share (e.g., conduct a hypothesis test with $\alpha = .05$).
 	
+Assumptions:
+\begin{itemize}
+\item Population distribution of y is normal for each combination of values
+
+\item Standard deviation of the conditional distribution of responses on y is the same at each combination
+
+\item Random Sampling
+\end{itemize}
+
+Hypothesis:
+\begin{center}
+	Null: lawn signs in  precincts do not impact Cuccinelli's vote share $$H_0: \beta = 0$$
+
+Alternate: lawn signs in precincts have an impact on Cuccinelli's vote share $$H_A: \beta \neq 0$$
+\end{center}
+
+Test-Statistic:
+	$$test-stat = \beta / se$$
+	 \begin{center}
+2.625  = 0.042 / 0.016
+	 \end{center}
+	 \lstinputlisting[language=R, firstline= 67 , lastline=70] {PS04_answersAR.R}
+	P-Value:
+	\lstinputlisting[language=R, firstline= 71 , lastline=73] {PS04_answersAR.R}
+	
+	Conclusion:
+	Reject the null hypothesis as 0.00972 is less than 0.05; a one-unit increase in lawn signs in assigned precincts does impact Cuccinelli's vote share according to this regression.
 	\newpage		
 	\item [(b)]  Use the results to determine whether being
 	next to precincts with these yard signs affects vote
 	share (e.g., conduct a hypothesis test with $\alpha = .05$).
+Assumptions:
+\begin{itemize}
+	\item Population distribution of y is normal for each combination of values
 	
-	\vspace{7cm}
+	\item Standard deviation of the conditional distribution of responses on y is the same at each combination
+	
+	\item Random Sampling
+\end{itemize}
+
+Hypothesis:
+\begin{center}
+	Null: lawn signs in adjacent precincts do not impact Cuccinelli's vote share $$H_0: \beta = 0$$
+	
+	Alternate: lawn signs in adjacent precincts have an impact on Cuccinelli's vote share $$H_A: \beta \neq 0$$
+\end{center}
+
+Test-Statistic:
+$$test-stat = \beta / se$$
+\begin{center}
+	3.231  = 0.042 / 0.013
+\end{center}
+\lstinputlisting[language=R, firstline= 85 , lastline=88] {PS04_answersAR.R}
+
+P-Value:
+\lstinputlisting[language=R, firstline= 89 , lastline=91] {PS04_answersAR.R}
+
+Conclusion:
+Reject the null hypothesis as 0.00157 is less than 0.05; a one-unit increase in lawn signs in adjacent precincts does impact Cuccinelli's vote share according to this regression.
+\newpage
 	\item [(c)] Interpret the coefficient for the constant term substantively.
-	\vspace{7cm}
+
+The coefficient for the constant term is 0.302, with a standard error of 0.011.
+This means that controlling for the two variables, no lawn signs in assigned or adjacent precincts, is expected to result in an average vote share of 0.302 for Cuccinelli.
+
 	
 	\item [(d)] Evaluate the model fit for this regression.  What does this	tell us about the importance of yard signs versus other factors that are not modeled?
-	
+
+The $R^2$ value for this regression is very small at 0.094. Yard signs result in an impact that accounts for a little more than 9 percent of the vote share. This means that yard signs do not carry as significant an impact on vote share as other factors may.
+
+
 \end{enumerate}  
 
 
